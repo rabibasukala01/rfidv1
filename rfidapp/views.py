@@ -57,22 +57,22 @@ def dashboard(request):
     return render(request, 'all_data.html', {'names': names})
 
 
-def add(request):
-    if request.method == 'POST':
-        firstname = request.POST["first"]
-        lastname = request.POST["last"]
-        tagid = request.POST.get('rfid')
-        # print(tagid)
-        # instance = Names(name=firstname, surname=lastname, tag=Tag.tag)
-        # instance.save()
-        return redirect('home')
+# def add(request):
+#     if request.method == 'POST':
+#         firstname = request.POST["first"]
+#         lastname = request.POST["last"]
+#         tagid = request.POST.get('rfid')
+#         # print(tagid)
+#         # instance = Names(name=firstname, surname=lastname, tag=Tag.tag)
+#         # instance.save()
+#         return redirect('home')
 
-    taglists = []
-    tags = Tag.objects.all()
-    for i in tags:
-        taglists.append(i.tag)
-    context = {
-        "taglists": list(set(taglists)),
-    }
-    # print(list(set(taglist)))
-    return render(request, 'add.html', context)
+#     taglists = []
+#     tags = Tag.objects.all()
+#     for i in tags:
+#         taglists.append(i.tag)
+#     context = {
+#         "taglists": list(set(taglists)),
+#     }
+#     # print(list(set(taglist)))
+#     return render(request, 'add.html', context)
