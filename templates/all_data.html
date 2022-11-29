@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    </style>
+<body>
+  <form action="" method="post">
+    {% csrf_token %}
+    <input type="submit" value="add">
+  </form>
+    <table>
+        <tr>
+            <th>name</th>
+            <th>surname</th>
+            <th>Tag</th>
+            
+        </tr>
+        {% for name  in names %}
+        <tr>
+          <td>{{name.name}}</td>
+          <td>{{name.surname}}</td>
+          <td>{{name.tag}}</td>
+         
+        </tr>
+        {% endfor %}
+    </table>
+    
+</body>
+</html>

@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>home</title>
+  </head>
+  <body>
+    <p>Will refresh content in 5 seconds</p>
+    <div id="mydata">
+      <li>ma last ma auney xu</li>
+    </div>
+    <h1 id="gg">Add in db, and see how list change without refreshing</h1>
+
+    <h1>testing--------------------------</h1>
+    {% for tag in tags %} 
+    {{tag.tag}} br 
+    {% endfor %}
+    <h1>testing--------------------------</h1>
+
+    <script>
+      async function load_and_append() {
+        const response = await fetch("http://127.0.0.1:5500/api/");
+        const datas = await response.json();
+        console.log(datas);
+
+        const newNode = document.createElement("li");
+
+        const textNode = document.createTextNode(
+          datas[datas.length - 1]["name"]
+        );
+
+        newNode.appendChild(textNode);
+
+        const list = document.getElementById("mydata");
+        list.replaceChild(newNode, list.children[0]);
+      }
+
+      //load_and_append()
+      {% comment %} setInterval(load_and_append, 2000); {% endcomment %}
+    </script>
+  </body>
+</html>
